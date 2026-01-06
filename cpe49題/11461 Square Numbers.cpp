@@ -1,3 +1,4 @@
+/*法一*/
 #include <iostream>
 #include <vector>
 using namespace std;
@@ -23,5 +24,21 @@ int main(){
 
 
 		cout << time << endl;
+	}
+}
+
+/*法二*/
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main(){
+	int n,m;
+	while(cin>>n>>m){
+		if(n == 0 && m == 0){
+			break;
+		}
+		int result = floor(sqrt(m)) - floor(sqrt(n-1));
+		cout << result << endl;
 	}
 }
