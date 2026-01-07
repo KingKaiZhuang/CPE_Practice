@@ -4,22 +4,20 @@ using namespace std;
 
 int main(){
 	int t;
-	int m,d;
-	string day_list[] = {"Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday"};
-	int date[] = {0,31,28,31,30,31,30,31,31,30,31,30,31};
-	int day_result=0;
-	
+	string date_list[]={"Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"};
+	int date_num[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
 	while(cin>>t){
+		int n,m;
+		int index=0;
 		while(t--){
-			int total=0;
-			cin>>m>>d;
-			for(int i=1;i<m;i++){
-				total+=date[i];
+			cin>>n>>m;
+			int d=0;
+			for(int i=1;i<n;i++){
+				d+=date_num[i];
 			}
-			
-			total+=d;
-			int index=(total-1)%7;
-			cout<<day_list[index]<<endl;	
+			d+=m;
+			index=d%7;
+			cout<<date_list[index]<<endl;
 		}
 	}
 }
