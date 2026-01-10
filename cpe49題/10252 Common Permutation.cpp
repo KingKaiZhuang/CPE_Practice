@@ -31,3 +31,37 @@ int main() {
 		commonChar(a,b);
 	}
 }
+
+// 解二
+#include <iostream>
+using namespace std;
+
+void result(string a,string b){
+	int first[26]={0};
+	int second[26]={0};
+	
+	for(int i=0;i<a.length();i++){
+		int tmp=a[i]-'a';
+		first[tmp]+=1;
+	}
+	
+	for(int j=0;j<b.length();j++){
+		int tmp=b[j]-'a';
+		second[tmp]+=1;
+	}
+	
+	for(int k=0;k<26;k++){
+		int common=min(first[k],second[k]);
+		for(int i=0;i<common;i++){
+			cout<<(char)('a'+k);
+		}
+	}
+	cout<<endl;
+}
+
+int main() {
+	string line1="",line2="";
+	while(getline(cin,line1)&&getline(cin,line2)){
+		result(line1,line2);
+	}
+}
