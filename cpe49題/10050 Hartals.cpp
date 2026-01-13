@@ -3,35 +3,39 @@
 using namespace std;
 
 int main() {
-	int T,N,P;
-	cin>>T;
+	int t,n,p;
+	cin>>t;
 	
-	while(T--){
-		cin>>N;
-		cin>>P;
+	while(t--){
+		cin>>n>>p;
+		
 		int tmp;
-		int day[N]={0};
-		vector<int>hartalArray;
-		for(int i=0;i<P;i++){
+		vector<int>partyNum;
+		
+		for(int i=0;i<p;i++){
 			cin>>tmp;
-			hartalArray.push_back(tmp);
+			partyNum.push_back(tmp);
 		}
-		int tmp2=0;
-		for(int i=0;i<hartalArray.size();i++){
-			tmp2=hartalArray[i];
-			while(tmp2<=N){
-				day[tmp2]=1;
-				tmp2+=hartalArray[i];
-			}			
+		
+		vector<bool>record(n+1,false);
+		int tmp2;
+		for(int i=0;i<partyNum.size();i++){
+			tmp2=partyNum[i];
+			while(tmp2<=n){
+				record[tmp2]=true;
+				tmp2+=partyNum[i];
+			}
 		}
+
 		int result=0;
-		for(int i=1;i<=N;i++){
-			if(day[i]==1){
+		for(int i=1;i<=n;i++){
+			if(record[i]==true){
 				if(i%7!=6&&i%7!=0){
 					result++;
 				}
 			}
 		}
+		
 		cout<<result<<endl;
 	}
 }
