@@ -17,19 +17,19 @@ int main() {
 			hartalArray.push_back(tmp);
 		}
 		int tmp2=0;
-		cout<<"N: "<<N<<endl;
 		for(int i=0;i<hartalArray.size();i++){
 			tmp2=hartalArray[i];
-			cout<<"tmp2: "<<tmp2<<endl;
-			while(tmp2<N){
-				day[hartalArray[i]]=1;
+			while(tmp2<=N){
+				day[tmp2]=1;
 				tmp2+=hartalArray[i];
 			}			
 		}
 		int result=0;
-		for(int i=0;i<N;i++){
+		for(int i=1;i<=N;i++){
 			if(day[i]==1){
-				result++;
+				if(i%7!=6&&i%7!=0){
+					result++;
+				}
 			}
 		}
 		cout<<result<<endl;
