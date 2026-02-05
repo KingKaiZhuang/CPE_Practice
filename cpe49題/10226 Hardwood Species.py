@@ -1,33 +1,33 @@
 n=int(input())
-flag=0
 input()
 
+flag=False
 for _ in range(n):
-	if flag==1:
+	
+	plantArr=[]
+	plantDic={}
+	
+	if flag==True:
 		print()
-	record=[]
-	calculator={}	
-			
+
 	while True:
 		try:
-			s=input()
+			plant=input()
+			if plant=="":
+				break
+			plantArr.append(plant)
 		except EOFError:
 			break
-	
-		if s=="":
-			break
 
-		record.append(s)
-	
-	for i in range(len(record)):
-		if record[i] in calculator:
-			calculator[record[i]]+=1
+	for plant in plantArr:
+		if plant in plantDic:
+			plantDic[plant]+=1
 		else:
-			calculator[record[i]]=1
+			plantDic[plant]=1
 	
-	recordSort=sorted(calculator)
+	plantArr_sort=sorted(plantDic)
 	
-	for r in recordSort:
-		print(f"{r} {calculator[r]*100/len(record):.4f}")
-	
-	flag=1
+	for p in plantArr_sort:
+		print(f"{p} {plantDic[p]*100/len(plantArr):.4f}")
+		
+	flag=True
