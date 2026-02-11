@@ -1,57 +1,37 @@
-#include <iostream>
+def sort_key(a):
+	r=mod(a,m)
+	
+	if a%2!=0:
+		odd_first=0
+	else:
+		odd_first=1
 
-using namespace std;
+	if a%2!=0:
+		last=-a
+	else:
+		last=a
 
-int main(){
-	int n,m;
-	while(cin >> n >> m) {
-		cout << n << " " << m << endl;
-		
-		if(n == 0 && m == 0) break;
-		
-		int numList[n];
-		
-		for(int i=0;i<n;i++){
-			cin >> numList[i];
-		}
-		
-		for(int i=0;i<n-1;i++){
-			for(int j=0;j<n-1-i;j++){
-				int val_1 = numList[j];
-				int val_2 = numList[j+1];
-				int mod_1 = val_1 % m;
-				int mod_2 = val_2 % m;
-				bool isOdd1 = (val_1 % 2) != 0;
-				bool isOdd2 = (val_2 % 2) != 0;
-				bool isTurn = false;
-				
-				if(mod_1 > mod_2){
-					isTurn = true;
-				} else if(mod_1 == mod_2) {
-					if(!isOdd1 && isOdd2){
-						isTurn = true;
-					} else if(isOdd1 && isOdd2){
-						if(val_1 < val_2) {
-							isTurn = true;
-						}
-					} else if(!isOdd1 && !isOdd2){
-						if(val_1 > val_2) {
-							isTurn = true;
-						}					
-					}
-				}
-				
-				if(isTurn) {
-					int temp = numList[j];
-					numList[j] = numList[j+1];
-					numList[j+1] = temp;				
-				}
+	return (r,odd_first,last)
 
-			}
-		}
+def mod(a,m):
+	r=a%m
+	if a<0 and r>0:
+		r-=m
+	return r
+
+while True:
+	n,m=map(int,input().split())
+	print(n,m)
+	if n==0 and m==0:
+		break
 		
-		for(int i=0;i<n;i++){
-			cout << numList[i] << endl;
-		}
-	}
-}
+	numList=[]
+	
+	for _ in range(n):
+		num=int(input())
+		numList.append(num)
+	
+	numList=sorted(numList,key=sort_key)
+	
+	for i in numList:
+		print(i)
