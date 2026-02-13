@@ -1,39 +1,39 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-using namespace std;
+while True:
+	try:
+		n1,n2=map(int,input().split())
+	except EOFError:
+		break
 
-int main(){
-	int n,m;
-	while(cin>>n>>m){
-		cout << n << " " << m << " ";
-		if(n > m){
-			int c = n;
-			n = m;
-			m = c;
-		}
+	print(f"{n1} {n2}",end=" ")
+	x=min(n1,n2)
+	y=max(n1,n2)		
 		
-		int tmp;
+	record=[]	
+	for n in range(x,y+1):
 		
-		int result;
-		vector<int>seq;
-		
-		for(int i=n;i<=m;i++){
-			int time=1;
-			tmp = i;
-			while(tmp != 1){
-				if(tmp % 2 != 0){
-					tmp=3*tmp+1;
-				} else {
-					tmp /= 2;
-				}
-				time++;		
-			}
-			seq.push_back(time);
-		}
-		
-		int max = *max_element(seq.begin(),seq.end());		
-		
-		cout << max << endl;
-	}
-}
+		num=n
+		count=1
+			
+		while True:
+			if num==1:
+				break
+
+			if num%2==0:
+				isOdd=False
+			else:
+				isOdd=True
+				
+			if isOdd:
+				num=3*num+1
+			else:
+				num=num//2
+				
+			count+=1
+
+		record.append(count)
+
+	maxNum=0
+	for i in record:
+		if i>maxNum:
+			maxNum=i
+	print(maxNum)
