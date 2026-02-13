@@ -1,25 +1,25 @@
 while True:
 	try:
-		n1,n2=map(int,input().split())
-		if n2==1 or n2>n1:
-			print("Boring!")
-			continue
+		x,y=map(int,input().split())
 	except EOFError:
-			break
-	
-	numList=[n1]
+		break
+
+	if x==1 or y==1:
+		print("Boring!")
+		continue
+
+	listNum=[x]
 	isBoring=False
-	tmp=n1
-	
-	while tmp>1:
-		if tmp%n2!=0:
+
+	while x>1:
+		if x%y!=0:
 			isBoring=True
 			break
-		tmp//=n2
-		numList.append(tmp)
-		
-		
+		else:
+			x//=y
+			listNum.append(x)
+
 	if isBoring:
 		print("Boring!")
 	else:
-		print(*numList)
+		print(*listNum)
