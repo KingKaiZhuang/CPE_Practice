@@ -1,18 +1,14 @@
 while True:
 	try:
-		n=int(input().strip())
+		cola=int(input())
 	except EOFError:
 		break
-	
-	sum=n
-	n+=1
-	empBottle=0
-	
+
+	n=cola+1
+	bottle=0
 	while n>=3:
-		cola=n//3
-		empBottle=n%3
-		
-		sum+=cola
-		n=n//3+empBottle
-		
-	print(sum)
+		bottle=n%3
+		n//=3
+		cola+=n
+		n+=bottle
+	print(cola)
