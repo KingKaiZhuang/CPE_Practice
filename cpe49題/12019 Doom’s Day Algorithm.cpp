@@ -1,23 +1,17 @@
-#include <iostream>
+week=["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+dayNum=[31,28,31,30,31,30,31,31,30,31,30,31]
 
-using namespace std;
+n=int(input())
 
-int main(){
-	int t;
-	string date_list[]={"Friday","Saturday","Sunday","Monday","Tuesday","Wednesday","Thursday"};
-	int date_num[]={0,31,28,31,30,31,30,31,31,30,31,30,31};
-	while(cin>>t){
-		int n,m;
-		int index=0;
-		while(t--){
-			cin>>n>>m;
-			int d=0;
-			for(int i=1;i<n;i++){
-				d+=date_num[i];
-			}
-			d+=m;
-			index=d%7;
-			cout<<date_list[index]<<endl;
-		}
-	}
-}
+for _ in range(n):
+	cur=4
+	m,d=map(int,input().split())
+	
+	if m==1: 
+		cur+=d
+	else:
+		for i in range(m-1):
+			cur+=dayNum[i]
+		cur+=d
+	
+	print(week[cur%7])
