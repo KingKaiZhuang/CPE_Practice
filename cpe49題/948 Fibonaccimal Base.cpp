@@ -1,39 +1,21 @@
-#include <iostream>
-using namespace std;
+n=int(input())
+fib=[0,1]
 
-int fibArray[40];
+for i in range(1,40):
+	fib.append(fib[i-1]+fib[i])
 
-void fibFun(){
-	fibArray[0]=0;
-	fibArray[1]=1;
-	for(int i=2;i<40;i++){
-		fibArray[i]=fibArray[i-1]+fibArray[i-2];		
-	}
-}
-
-string calculate(int num){
-	cout<<num<<" = ";
-	string result="";
-	bool start=false;
-	for(int i=39;i>1;i--){
-		if(num>=fibArray[i]){
-			result+="1";
-			num-=fibArray[i];
-			start=true;
-		}else if(start){
-			result+="0";
-		}
-	}
-	return result;
-}
-
-int main() {
-	fibFun();
-	int time,n;
-	cin>>time;
+for i in range(n):
+	num=int(input())
+	print(num,end=" ")
+	ans=""
+	isFirst=False
 	
-	while(time--){
-		cin>>n;
-		cout<<calculate(n)<<" (fib)"<<endl;
-	}
-}
+	for j in reversed(fib[2:]):
+		if num>=j:
+			ans+="1"
+			num-=j
+			isFirst=True
+		elif isFirst:
+			ans+="0"
+			
+	print(f"= {ans} (fib)")
