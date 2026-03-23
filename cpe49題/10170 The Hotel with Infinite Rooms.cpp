@@ -1,18 +1,17 @@
-#include <bits/stdc++.h>
+#include <iostream>
 
 using namespace std;
 
 int main(){
-	long long s,d;
-	while(cin>>s>>d){				
-		long long curPeople=s;
-		long long date=s;
-		
-		while(date<d){
-			curPeople+=1;
-			date+=curPeople;
+	long long p,d;
+	while(cin>>p>>d){
+		while(1){
+			if(p>=d){
+				cout<<p<<endl;
+				break;
+			}
+			d-=p;
+			p+=1;		
 		}
-		
-		cout<<curPeople<<endl;
 	}
 }
