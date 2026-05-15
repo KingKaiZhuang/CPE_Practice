@@ -1,33 +1,9 @@
-def countOne(num):
-	numArr=[]	
-	while num!=0:
-		numArr.append(num%2)
-		num//=2
-		numArr.reverse()
-	
-	b=0
-	for i in range(len(numArr)):
-		if numArr[i]==1:
-			b+=1
-	return b
+testCase=int(input())
 
-n=int(input())
+for _ in range(testCase):
+    n=int(input())
 
-for _ in range(n):
-	num=int(input())
-	tmp=num
-	
-	b1=countOne(num)
-	
-	""" two """
-	sum=0
-	count=0
-
-	while tmp!=0:
-		sum+=(tmp%10)*(16**count)
-		tmp//=10
-		count+=1
-		
-	b2=countOne(sum)
-	
-	print(f"{b1} {b2}")
+    b=bin(n).count("1")
+    h=int(str(n),16)
+    h=bin(h).count("1")
+    print(f"{b} {h}")
