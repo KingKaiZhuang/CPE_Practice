@@ -1,14 +1,17 @@
 while True:
-	try:
-		cola=int(input())
-	except EOFError:
-		break
-
-	n=cola+1
-	bottle=0
-	while n>=3:
-		bottle=n%3
-		n//=3
-		cola+=n
-		n+=bottle
-	print(cola)
+    try:
+        n=int(input())
+        cola=n
+        emp=n
+        
+        while emp>=3:
+            newCola=emp//3
+            remains=emp%3
+            cola+=newCola
+            emp=newCola+remains
+        
+        if emp==2:
+            cola+=1
+        print(cola)
+    except EOFError:
+        break
